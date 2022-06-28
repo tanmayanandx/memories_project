@@ -20,3 +20,22 @@ export const getPosts = () => async (disaptch) => {
 
     //disaptch (action);
 }
+
+export const createPost = (post) => async (disaptch) => {
+    try {
+        const { data } = await api.createPost(post);
+        disaptch({ type: 'CREATE', payload: data });
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const updatePost = (id, post) => async (disaptch) => {
+    try {
+        const {data} = await api.updatePost(id, post);
+
+        disaptch({type: 'UPADTE', payload: data});
+    } catch (error) {
+        console.log(error.message)
+    }
+}
